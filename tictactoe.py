@@ -1,4 +1,27 @@
 
+class FieldState:
+    PLAYERX = -1
+    FREE = 0
+    PLAYERO = 1
+
+class Field:
+    
+    def __init__(self, row, column):
+        self._state = FieldState.FREE
+        self._row = row
+        self._column = column
+
+    def take(self, player):
+        self._state = player
+
+class Board:
+    
+    def __init__(self, dimension):
+        self._fields = {(row, column): Field(row, column)
+                       for row in range(dimension)
+                       for column in range(dimension)}
+
+
 class Tictactoe:
     
     def __init__(self, boardDimsension):
@@ -83,3 +106,7 @@ game.playTurn(2, 2, 'X')
 game.playTurn(2, 1, 'O')
 game.printBoard()
 #print(game.checkwin(game.board)
+board = Board(3)
+print(board._fields[1,2]._state)
+board._fields[1,2].take(FieldState.PLAYERX)
+print(board._fields[1,2]._state)
