@@ -1,3 +1,9 @@
+h1 {
+  font-family: 'Passero One', cursive;
+  text-align: center;
+  font-size: 6em;
+}
+
 .container {
   margin: auto;
   width: 50%;
@@ -5,6 +11,7 @@
 
 #board {
     display: grid;
+    justify-content: center;
     grid-template-columns: 10em 10em 10em;
     grid-auto-rows: 10em;
     grid-gap: .2em;
@@ -20,4 +27,5 @@
   .field:hover {
     background-color: rgba(255, 180, 35, .7);
     cursor: pointer;
+    transform: scale(1.02);
   }
