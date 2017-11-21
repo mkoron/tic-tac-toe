@@ -1,5 +1,9 @@
+body {
+  perspective: 1500em;
+}
+
 h1 {
-  font-family: 'Passero One', cursive;
+  font-family: "Passero One", cursive;
   text-align: center;
   font-size: 6em;
 }
@@ -10,22 +14,49 @@ h1 {
 }
 
 #board {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 10em 10em 10em;
-    grid-auto-rows: 10em;
-    grid-gap: .2em;
-    background-color: #fff;
-    color: #444;
-  }
-  
-  .field {
-    background-color: rgb(95, 147, 232);
-    color: #fff;
-  }
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 10em 10em 10em;
+  grid-auto-rows: 10em;
+  grid-gap: 1em;
+  background-color: #fff;
+  color: #444;
+}
 
-  .field:hover {
-    background-color: rgba(255, 180, 35, .7);
-    cursor: pointer;
-    transform: scale(1.02);
-  }
+.field {
+  width: 10em;
+  height: 10em;
+  text-align: center;
+  margin: 0 auto;
+  transition: transform 0.33s; /* Animate the transform properties */
+  transform-style: preserve-3d; /* <-NB */
+}
+
+/* .field:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+} */
+
+/* The two faces of the cube */
+.left,
+.front {
+  background: rgb(247, 247, 247);
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 8px 5px rgba(210, 223, 226, 0.2) inset;
+  height: 10em;
+}
+
+/* Position the faces */
+.left {
+  transform: translateX(-5em) translateY(0.1em) rotateY(90deg);
+}
+
+.front {
+  transform: translateZ(5em) translateY(-10em);
+}
+
+/* Rotate the cube */
+.field:hover {
+  transform: rotateY(90deg); /* Text bleed at 90º */
+}
